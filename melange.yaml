@@ -41,10 +41,17 @@ environment:
         uid: 10000
 
 pipeline:
-  - runs: |
-      wget https://www.hiawatha-webserver.org/files/hiawatha-11.1.tar.gz
-      tar -xzf hiawatha-11.1.tar.gz
-      cd hiawatha-11.1
-      mkdir build && cd build
-      cmake ..
-      sudo make install/strip
+  - uses: fetch
+    with:
+      uri: https://www.hiawatha-webserver.org/files/hiawatha-11.1.tar.gz
+
+  - uses: jwlawson/actions-setup-cmake@v1.12
+
+  - name: 'Create build dir'
+    runs: mkdir build && cd build
+
+  - name: 'Build using cmake'
+    run: cmake ..
+
+  - name: 'Install hiawatha'
+    run: make install/strip
