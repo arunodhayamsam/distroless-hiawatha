@@ -44,6 +44,7 @@ pipeline:
   - uses: git-checkout
     with:
       repository: https://github.com/ajayvarma-ittrident/hiawatha
+      branch: master
   - uses: cmake/configure
   - uses: cmake/build
   - uses: cmake/install
