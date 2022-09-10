@@ -47,9 +47,11 @@ pipeline:
       expected-sha256: {{ .SHA }}
 
   - name: Get latest CMake
+    uses: actions/checkout@v3  
     uses: lukka/get-cmake@latest
 
-  - name: Restore artifacts, or setup vcpkg (do not install any package)
+  - name: Run cmake
+    uses: actions/checkout@v3  
     uses: lukka/run-cmake@v10
 
   - name: 'Install hiawatha'
