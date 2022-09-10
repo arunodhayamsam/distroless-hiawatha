@@ -41,7 +41,11 @@ environment:
         uid: 10000
 
 pipeline:
-  - uses: fetch
+  - uses: git-checkout
     with:
-      uri: https://www.hiawatha-webserver.org/files/${{package.name}}-${{package.version}}.tar.gz
-      expected-sha256: {{ .SHA }}
+      repository: https://gitlab.com/hsleisink/hiawatha/
+      branch: v11.1
+  - uses: cmake/configure
+  - uses: cmake/build
+  - uses: cmake/install
+  - uses: strip      
