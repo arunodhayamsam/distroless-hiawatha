@@ -5,8 +5,15 @@ on:
 
 jobs:
   build:
-    name: Build OCI image
+    name: Build Hiawatha OCI image
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        hiawatha-version: 11.2
+        include:
+         - hiawatha-version: 11.2
+            sha256: 99c64f76927f93469f062ab76b74eb79a397ea4be12da86bf746b2bb57cf1bc5
 
     # https://docs.github.com/en/actions/reference/authentication-in-a-workflow
     permissions:
@@ -24,12 +31,31 @@ jobs:
         echo ::set-output name=date::$(date -u +%Y%m%d)
       shell: bash
 
+    - uses: sigstore/cosign-installer@main
+    - uses: chainguard-dev/actions/melange-build@main
+      with:
+        sign-with-temporary-key: true
+        config: melange.yaml
+        empty-workspace: true
+        archs: x86_64
+        template: "{\"Version\": \"${{ matrix.hiawatha-version }}\", \"SHA\": \"${{ matrix.sha256 }}\"}"
+
     - uses: distroless/actions/apko-build@main
       with:
         config: apko.yaml
         tag: template:${{ steps.snapshot-date.outputs.date }}
+        tag: hiawatha:${{ steps.snapshot-date.outputs.date }}
+        keyring-append: /github/workspace/melange.rsa.pub
+        archs: x86_64
+        source-date-epoch: ${{ steps.snapshot-date.outputs.epoch }}
+        additional-tags: ${{ matrix.hiawatha-version }}
 
+    - name: Smoke Test
+      run: |
+        IMAGE_NAME=$(docker load < output.tar | grep "Loaded image" | sed 's/^Loaded image: //')
+        IMAGE_NAME=$IMAGE_NAME ./test.sh
+        
     - uses: actions/upload-artifact@v3
       with:
-        name: template.tar
+        name: hiawatha.tar
         path: ./output.tar
