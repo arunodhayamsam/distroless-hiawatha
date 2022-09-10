@@ -34,25 +34,23 @@ environment:
 
   accounts:
     groups:
-      - groupname: nginx
+      - groupname: hiawatha
         gid: 10000
     users:
-      - username: nginx
+      - username: hiawatha
         uid: 10000
 
 pipeline:
   - uses: fetch
     with:
-      uri: https://www.hiawatha-webserver.org/files/hiawatha-11.1.tar.gz
-      expected-sha256: 99c64f76927f93469f062ab76b74eb79a397ea4be12da86bf746b2bb57cf1bc5
+      uri: https://www.hiawatha-webserver.org/files/${{package.name}}-${{package.version}}.tar.gz
+      expected-sha256: {{ .SHA }}
 
-  - uses: jwlawson/actions-setup-cmake@v1.12
+  - name: Get latest CMake
+    uses: lukka/get-cmake@latest
 
-  - name: 'Create build dir'
-    runs: mkdir build && cd build
-
-  - name: 'Build using cmake'
-    run: cmake ..
+  - name: Restore artifacts, or setup vcpkg (do not install any package)
+    uses: lukka/run-cmake@v10
 
   - name: 'Install hiawatha'
     run: make install/strip
