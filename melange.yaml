@@ -14,10 +14,13 @@ environment:
     packages:
       - alpine-baselayout-data
       - busybox
+      - build-base
+      - scanelf
+      - ssl_client
+      - ca-certificates-bundle
+      - openssl1.1-compat-dev      
       - musl-dev 
       - gcc 
-      - cmake 
-      - make 
       - libtool 
       - libc6-compat 
       - pcre-dev  
