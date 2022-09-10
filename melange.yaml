@@ -1,6 +1,6 @@
   
 package:
-  name: hiawatha-webserver
+  name: hiawatha
   version: 11.1
   description: "hiawatha"
   target-architecture:
