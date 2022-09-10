@@ -72,7 +72,7 @@ jobs:
 
     - name: Smoke Test
       run: |
-        IMAGE_NAME=$(docker load < hiawatha.tar | grep "Loaded image" | sed 's/^Loaded image: //')
+        IMAGE_NAME=$(docker load < output.tar | grep "Loaded image" | sed 's/^Loaded image: //')
         IMAGE_NAME=$IMAGE_NAME ./test.sh
 
     # Post to slack when things fail.
