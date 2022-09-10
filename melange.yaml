@@ -4,7 +4,7 @@ package:
   version: 11.1
   description: "hiawatha"
   target-architecture:
-    - all
+    - x86_64
 environment:
   contents:
     repositories:
@@ -45,8 +45,3 @@ pipeline:
     with:
       uri: https://www.hiawatha-webserver.org/files/${{package.name}}-${{package.version}}.tar.gz
       expected-sha256: {{ .SHA }}
-
-  - uses: autoconf/cmake
-
-  - name: 'Install hiawatha'
-    run: make install/strip
