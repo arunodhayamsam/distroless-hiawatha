@@ -46,8 +46,10 @@ pipeline:
       uri: https://www.hiawatha-webserver.org/files/${{package.name}}-${{package.version}}.tar.gz
       expected-sha256: {{ .SHA }}
 
-  - name: Get latest CMake
+  - name: check out
     uses: actions/checkout@v3  
+
+  - name: Get latest CMake
     uses: lukka/get-cmake@latest
 
   - name: Run cmake
