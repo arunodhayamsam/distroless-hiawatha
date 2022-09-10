@@ -26,8 +26,10 @@ jobs:
     strategy:
       matrix:
         # versionmod
-        hiawatha-version: 11.2
+        hiawatha-version: [11.1, 11.2]
         include:
+          - hiawatha-version: 11.1
+            sha256: 802d1cedcb9612fa1abba650fac7224b33e7410a17e0045c66a75413c9195e64        
           - hiawatha-version: 11.2
             sha256: 99c64f76927f93469f062ab76b74eb79a397ea4be12da86bf746b2bb57cf1bc5
 
