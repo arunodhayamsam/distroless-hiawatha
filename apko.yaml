@@ -6,6 +6,7 @@ contents:
     - '@local /github/workspace/packages'
   packages:
     - alpine-baselayout-data
+    - ca-certificates-bundle    
     - hiawatha@local
     
 accounts:
