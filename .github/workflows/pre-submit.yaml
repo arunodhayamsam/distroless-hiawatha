@@ -43,7 +43,6 @@ jobs:
     - uses: distroless/actions/apko-build@main
       with:
         config: apko.yaml
-        tag: template:${{ steps.snapshot-date.outputs.date }}
         tag: hiawatha:${{ steps.snapshot-date.outputs.date }}
         keyring-append: /github/workspace/melange.rsa.pub
         archs: x86_64
