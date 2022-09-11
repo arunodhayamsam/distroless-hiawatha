@@ -23,15 +23,15 @@ jobs:
     outputs:
       image-refs-11-2: ${{ steps.emit-refs.outputs.image-refs }}
 
-    strategy:
-      matrix:
-        # versionmod
-        hiawatha-version: [11.1, 11.2]
-        include:
-          - hiawatha-version: 11.1
-            sha256: 802d1cedcb9612fa1abba650fac7224b33e7410a17e0045c66a75413c9195e64        
-          - hiawatha-version: 11.2
-            sha256: 99c64f76927f93469f062ab76b74eb79a397ea4be12da86bf746b2bb57cf1bc5
+#     strategy:
+#       matrix:
+#         # versionmod
+#         hiawatha-version: [11.1, 11.2]
+#         include:
+#           - hiawatha-version: 11.1
+#             sha256: 802d1cedcb9612fa1abba650fac7224b33e7410a17e0045c66a75413c9195e64        
+#           - hiawatha-version: 11.2
+#             sha256: 99c64f76927f93469f062ab76b74eb79a397ea4be12da86bf746b2bb57cf1bc5
 
     # https://docs.github.com/en/actions/reference/authentication-in-a-workflow
     permissions:
@@ -52,7 +52,7 @@ jobs:
         config: melange.yaml
         empty-workspace: true
         archs: x86_64
-        template: "{\"Version\": \"${{ matrix.hiawatha-version }}\", \"SHA\": \"${{ matrix.sha256 }}\"}"
+#         template: "{\"Version\": \"${{ matrix.hiawatha-version }}\", \"SHA\": \"${{ matrix.sha256 }}\"}"
 
     - id: apko
       uses: distroless/actions/apko-snapshot@main
@@ -61,7 +61,7 @@ jobs:
         base-tag: ghcr.io/${{ github.repository }}
         keyring-append: /github/workspace/melange.rsa.pub
         archs: x86_64
-        additional-tags: ${{ matrix.hiawatha-version }}        
+#         additional-tags: ${{ matrix.hiawatha-version }}        
         image_refs: apko.images
 
     - name: Emit Image Refs output
