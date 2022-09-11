@@ -7,6 +7,7 @@ contents:
   packages:
     - alpine-baselayout-data
     - ca-certificates-bundle    
+    - openssl1.1-compat-dev          
     - hiawatha@local
     
 accounts:
