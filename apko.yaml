@@ -6,8 +6,27 @@ contents:
     - '@local /github/workspace/packages'
   packages:
     - alpine-baselayout-data
-    - ca-certificates-bundle    
-    - openssl1.1-compat-dev          
+    - busybox
+    - build-base
+    - scanelf
+    - ssl_client
+    - ca-certificates-bundle
+    - openssl1.1-compat-dev      
+    - musl-dev 
+    - gcc 
+    - libtool 
+    - libc6-compat 
+    - pcre-dev  
+    - wget
+    - tar
+    - cmake 
+    - make 
+    - musl-dev 
+    - libxml2-dev 
+    - libxslt-dev 
+    - util-linux 
+    - php7-json 
+    - php7-fpm   
     - hiawatha@local
     
 accounts:
