@@ -3,7 +3,7 @@ contents:
     - https://dl-cdn.alpinelinux.org/alpine/edge/main
     - http://dl-cdn.alpinelinux.org/alpine/v3.8/main
     - http://dl-cdn.alpinelinux.org/alpine/v3.8/community
-    - '@local /github/workspace/packages'
+    - '@local ${{ github.workspace }}/packages'
   packages:
     - alpine-baselayout-data
     - busybox
