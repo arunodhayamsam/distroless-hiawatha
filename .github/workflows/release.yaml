@@ -64,11 +64,27 @@ jobs:
         additional-tags: ${{ matrix.hiawatha-version }}        
         image_refs: apko.images
 
+#     - name: Emit Image Refs output
+#       id: emit-refs
+#       run: |
+#         cat apko.images | sed 's/$/\n/g' | grep -v '^$' | jq -R -s -c 'split("\n")[:-1]' | jq .
+#         echo ::set-output name=image-refs::$(cat apko.images | sed 's/$/\n/g' | grep -v '^$' | jq -R -s -c 'split("\n")[:-1]')
+
     - name: Emit Image Refs output
       id: emit-refs
       run: |
-        cat apko.images | sed 's/$/\n/g' | grep -v '^$' | jq -R -s -c 'split("\n")[:-1]' | jq .
-        echo ::set-output name=image-refs::$(cat apko.images | sed 's/$/\n/g' | grep -v '^$' | jq -R -s -c 'split("\n")[:-1]')
+        # versionmod
+        versions="1.22.0,1.23.1"
+        echo "cat apko.images | sed 's/\\$/\n/g' | grep -v '^\$' | jq -R -s -c 'split(\"\n\")[:-1]'" > refs-to-json.sh && chmod +x refs-to-json.sh
+        trap "rm -f refs-to-json.sh" EXIT
+        for version in ${versions//,/ }; do
+          if [[ "${version}" == "${{ matrix.nginx-version }}" ]]; then
+            key=image-refs-$(echo ${version} | sed 's|\.|-|g')
+            value=$(./refs-to-json.sh | sed 's|"|\\"|g')
+            echo ::set-output name=${key}::${value}
+            break
+          fi
+        done
 
     - name: Smoke Test
       run: |
