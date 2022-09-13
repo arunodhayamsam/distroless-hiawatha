@@ -46,8 +46,8 @@ environment:
 pipeline:
   - uses: git-checkout
     with:
-      repository: https://github.com/ajayvarma-ittrident/hiawatha
-      branch: master
+      repository: https://gitlab.com/hsleisink/hiawatha
+      branch: v11.1
   - uses: cmake/configure
   - uses: cmake/build
   - uses: cmake/install
