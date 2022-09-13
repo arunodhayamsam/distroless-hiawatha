@@ -1,10 +1,10 @@
   
 package:
-  name: hiawatha-webserver
+  name: hiawatha
   version: 11.1
   description: "hiawatha"
   target-architecture:
-    - all
+    - x86_64
 environment:
   contents:
     repositories:
@@ -14,10 +14,13 @@ environment:
     packages:
       - alpine-baselayout-data
       - busybox
+      - build-base
+      - scanelf
+      - ssl_client
+      - ca-certificates-bundle
+      - openssl1.1-compat-dev      
       - musl-dev 
       - gcc 
-      - cmake 
-      - make 
       - libtool 
       - libc6-compat 
       - pcre-dev  
@@ -34,35 +37,18 @@ environment:
 
   accounts:
     groups:
-      - groupname: nginx
+      - groupname: hiawatha
         gid: 10000
     users:
-      - username: nginx
+      - username: hiawatha
         uid: 10000
 
 pipeline:
   - uses: git-checkout
     with:
-      repository: https://github.com/ajayvarma-ittrident/hiawatha
+      repository: https://github.com/arunodhayamsam/hiawatha-webserver
       branch: master
   - uses: cmake/configure
   - uses: cmake/build
   - uses: cmake/install
-  - uses: strip          
-
-#pipeline:
-#  - uses: git-checkout
-#    with:
-#      repository: https://gitlab.com/hsleisink/hiawatha.git
-#      branch: master
-#  - uses: cmake/configure
-#  - uses: cmake/build
-#  - uses: cmake/install
-#  - uses: strip    
-#  - name: Create directory    
-#    run: |
-#       cd hiawatha
-#       mkdir -p build && cd build
-#       cmake ..
-#       make install/strip 
-   
+  - uses: strip      
