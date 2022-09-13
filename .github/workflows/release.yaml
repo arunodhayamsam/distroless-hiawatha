@@ -59,7 +59,7 @@ jobs:
         sign-with-temporary-key: true
         config: melange.yaml
         empty-workspace: true
-        archs: x86_64,aarch64,armv7
+        archs: x86_64
         template: "{\"Version\": \"${{ matrix.hiawatha-version }}\", \"SHA\": \"${{ matrix.sha256 }}\"}"
 
     - id: apko
