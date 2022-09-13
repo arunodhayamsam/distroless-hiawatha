@@ -21,6 +21,7 @@ jobs:
     runs-on: ubuntu-latest
 
     outputs:
+      image-refs-11-1: ${{ steps.emit-refs.outputs.image-refs }}    
       image-refs-11-2: ${{ steps.emit-refs.outputs.image-refs }}
 
      strategy:
