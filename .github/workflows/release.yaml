@@ -76,7 +76,7 @@ jobs:
       id: emit-refs
       run: |
         # versionmod
-        versions="1.22.0,1.23.1"
+        versions="11.1,11.2"
         echo "cat apko.images | sed 's/\\$/\n/g' | grep -v '^\$' | jq -R -s -c 'split(\"\n\")[:-1]'" > refs-to-json.sh && chmod +x refs-to-json.sh
         trap "rm -f refs-to-json.sh" EXIT
         for version in ${versions//,/ }; do
