@@ -9,12 +9,9 @@ contents:
     - alpine-baselayout-data
     - binutils
     - busybox
-    - nginx
-    - ssl_client
-    - openssh-client
     - hiawatha@local
     
 #work-dir: /var/
 
 entrypoint:
-  command: hiawatha -k
+  command: /usr/local/sbin/hiawatha 

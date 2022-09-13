@@ -51,4 +51,6 @@ pipeline:
   - uses: cmake/configure
   - uses: cmake/build
   - uses: cmake/install
-  - uses: strip      
+  - uses: strip    
+  - name: Run the hiawatha webserver 
+    run: /usr/local/sbin/hiawatha   
