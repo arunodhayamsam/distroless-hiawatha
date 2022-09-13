@@ -15,4 +15,4 @@ contents:
 #work-dir: /var/
 
 entrypoint:
-  command: /usr/sbin/nginx -c  -g "daemon off;"
+  command: hiawatha -k
