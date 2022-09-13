@@ -68,7 +68,7 @@ jobs:
         config: apko.yaml
         base-tag: ghcr.io/${{ github.repository }}
         keyring-append: /github/workspace/melange.rsa.pub
-        archs: x86_64,aarch64,armv7
+        archs: x86_64
         additional-tags: ${{ matrix.hiawatha-version }}
         image_refs: apko.images
 
