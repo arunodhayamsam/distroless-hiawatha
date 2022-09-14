@@ -29,14 +29,14 @@ contents:
     - php7-json 
     - php7-fpm   
     
-accounts:
-  groups:
-    - groupname: hiawatha
-      gid: 10000
-  users:
-    - username: hiawatha
-      uid: 10000
-  run-as: 10000    
+# accounts:
+#   groups:
+#     - groupname: hiawatha
+#       gid: 10000
+#   users:
+#     - username: hiawatha
+#       uid: 10000
+#   run-as: 10000    
 
 # paths:
 #   - path: /s6
@@ -59,10 +59,10 @@ accounts:
     
 #work-dir: /var/
 
-entrypoint:
-  type: service-bundle
-  services:
-    hiawatha: /usr/sbin/hiawatha start
+# entrypoint:
+#   type: service-bundle
+#   services:
+#     hiawatha: /usr/sbin/hiawatha start
 
 archs:
   - amd64
