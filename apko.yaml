@@ -1,11 +1,12 @@
 contents:
   repositories:
     - https://dl-cdn.alpinelinux.org/alpine/edge/main
-    - http://dl-cdn.alpinelinux.org/alpine/v3.8/main
-    - http://dl-cdn.alpinelinux.org/alpine/v3.8/community
+    - https://dl-cdn.alpinelinux.org/alpine/edge/community
+    - https://dl-cdn.alpinelinux.org/alpine/edge/testing
     - '@local /github/workspace/packages'
   packages:
     - alpine-baselayout-data
+    - hiawatha@local    
     - busybox
     - build-base
     - scanelf
@@ -27,7 +28,6 @@ contents:
     - util-linux 
     - php7-json 
     - php7-fpm   
-    - hiawatha@local
     
 accounts:
   groups:
@@ -38,25 +38,24 @@ accounts:
       uid: 10000
   run-as: 10000    
 
-
-paths:
-  - path: /s6
-    type: directory
-    uid: 10000
-    gid: 10000
-    permissions: 0o755
-  - path: /var/lib/hiawatha
-    type: directory
-    uid: 10000
-    gid: 10000
-    permissions: 0o755
-    recursive: true
-  - path: /run/hiawatha
-    uid: 10000
-    gid: 10000
-    type: directory
-    permissions: 0o755
-    recursive: true    
+# paths:
+#   - path: /s6
+#     type: directory
+#     uid: 10000
+#     gid: 10000
+#     permissions: 0o755
+#   - path: /var/lib/hiawatha
+#     type: directory
+#     uid: 10000
+#     gid: 10000
+#     permissions: 0o755
+#     recursive: true
+#   - path: /run/hiawatha
+#     uid: 10000
+#     gid: 10000
+#     type: directory
+#     permissions: 0o755
+#     recursive: true    
     
 #work-dir: /var/
 
