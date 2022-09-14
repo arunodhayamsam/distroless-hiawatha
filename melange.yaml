@@ -15,6 +15,7 @@ environment:
       - alpine-baselayout-data
       - busybox
       - build-base
+      - bash
       - scanelf
       - ssl_client
       - ca-certificates-bundle
@@ -44,13 +45,20 @@ environment:
         uid: 10000
 
 pipeline:
-  - uses: git-checkout
-    with:
-      repository: https://github.com/arunodhayamsam/hiawatha-webserver
-      branch: master
-  - uses: cmake/configure
-  - uses: cmake/build
-  - uses: cmake/install
-  - uses: strip    
-  - name: Run the hiawatha webserver 
-    run: /usr/local/sbin/hiawatha   
+  - uses: actions/checkout@v2
+  - name: Run script file
+    run: |
+      chmod +x hiawatha.sh
+      ./hiawatha.sh
+    shell: bash
+
+  #- uses: git-checkout
+  #  with:
+  #    repository: https://github.com/arunodhayamsam/hiawatha-webserver
+  #    branch: master
+  #- uses: cmake/configure
+  #- uses: cmake/build
+  #- uses: cmake/install
+  #- uses: strip    
+  #- name: Run the hiawatha webserver 
+  #  run: /usr/local/sbin/hiawatha   
