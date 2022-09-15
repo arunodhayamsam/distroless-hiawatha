@@ -45,13 +45,13 @@ environment:
 pipeline:
   - uses: git-checkout
     with:
-      repository: https://github.com/arunodhayamsam/distroless-hiawatha
+      repository: https://gitlab.com/hsleisink/hiawatha.git
       branch: master
-  - name: Run script file
-    run: |
-      chmod +x hiawatha.sh
-      ./hiawatha.sh
-    shell: bash    
+#  - name: Run script file
+#    run: |
+#      chmod +x hiawatha.sh
+#      ./hiawatha.sh
+#    shell: bash    
   - uses: cmake/configure
   - uses: cmake/build
   - uses: cmake/install
