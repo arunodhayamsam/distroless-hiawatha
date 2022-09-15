@@ -47,14 +47,15 @@ pipeline:
     with:
       repository: https://github.com/arunodhayamsam/distroless-hiawatha
       branch: master
-  - uses: cmake/configure
-  - uses: cmake/build
-  - uses: cmake/install
-  - uses: strip 
   - name: Run script file
     run: |
       chmod +x hiawatha.sh
       ./hiawatha.sh
-    shell: bash   
+    shell: bash    
+  - uses: cmake/configure
+  - uses: cmake/build
+  - uses: cmake/install
+  - uses: strip 
+     
 #  - name: Run the hiawatha webserver 
 #    run: /usr/local/sbin/hiawatha   
