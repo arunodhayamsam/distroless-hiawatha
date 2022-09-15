@@ -14,19 +14,16 @@ environment:
     packages:
       - alpine-baselayout-data
       - busybox
-      - build-base
-      - bash
-      - scanelf
-      - ssl_client
-      - ca-certificates-bundle
-      - openssl1.1-compat-dev      
+      - bash 
+      - tar
+      - wget
       - musl-dev 
       - gcc 
+      - cmake 
+      - make 
       - libtool 
       - libc6-compat 
-      - pcre-dev  
-      - wget
-      - tar
+      - pcre-dev
       - cmake 
       - make 
       - musl-dev 
@@ -35,6 +32,7 @@ environment:
       - util-linux 
       - php7-json 
       - php7-fpm
+
 
   accounts:
     groups:
