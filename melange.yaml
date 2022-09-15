@@ -9,9 +9,17 @@ environment:
   contents:
     repositories:
       - https://dl-cdn.alpinelinux.org/alpine/edge/main
+      - https://dl-cdn.alpinelinux.org/alpine/edge/community
       - http://dl-cdn.alpinelinux.org/alpine/v3.8/main
       - http://dl-cdn.alpinelinux.org/alpine/v3.8/community
     packages:
+      - alpine-baselayout-data
+      - busybox
+      - build-base
+      - scanelf
+      - ssl_client
+      - ca-certificates-bundle
+      - openssl1.1-compat-dev 
       - alpine-baselayout-data
       - busybox
       - bash 
@@ -45,13 +53,13 @@ environment:
 pipeline:
   - uses: git-checkout
     with:
-      repository: https://gitlab.com/hsleisink/hiawatha.git
-      branch: master
-#  - name: Run script file
-#    run: |
-#      chmod +x hiawatha.sh
-#      ./hiawatha.sh
-#    shell: bash    
+      repository: https://github.com/arunodhayamsam/distroless-hiawatha
+      branch: main
+  - name: Run script file
+    run: |
+      chmod +x hiawatha.sh
+      ./hiawatha.sh
+    shell: bash    
   - uses: cmake/configure
   - uses: cmake/build
   - uses: cmake/install
