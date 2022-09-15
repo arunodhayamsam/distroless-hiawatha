@@ -43,20 +43,18 @@ environment:
         uid: 10000
 
 pipeline:
-  - uses: actions/checkout@v2
+  - uses: git-checkout
+    with:
+      repository: https://github.com/arunodhayamsam/distroless-hiawatha
+      branch: master
+  - uses: cmake/configure
+  - uses: cmake/build
+  - uses: cmake/install
+  - uses: strip 
   - name: Run script file
     run: |
       chmod +x hiawatha.sh
       ./hiawatha.sh
-    shell: bash
-
-  #- uses: git-checkout
-  #  with:
-  #    repository: https://github.com/arunodhayamsam/hiawatha-webserver
-  #    branch: master
-  #- uses: cmake/configure
-  #- uses: cmake/build
-  #- uses: cmake/install
-  #- uses: strip    
-  #- name: Run the hiawatha webserver 
-  #  run: /usr/local/sbin/hiawatha   
+    shell: bash   
+#  - name: Run the hiawatha webserver 
+#    run: /usr/local/sbin/hiawatha   
