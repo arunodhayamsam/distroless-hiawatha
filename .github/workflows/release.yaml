@@ -46,6 +46,9 @@ jobs:
     - name: Setup QEMU
       uses: docker/setup-qemu-action@v2.0.0
 
+    - name: Add cmake
+      uses: lukka/get-cmake@latest 
+      
     - uses: chainguard-dev/actions/melange-build@main
       with:
         sign-with-temporary-key: true

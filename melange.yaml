@@ -55,7 +55,6 @@ pipeline:
     with:
       repository: https://github.com/arunodhayamsam/distroless-hiawatha
       branch: main
-  - uses: lukka/get-cmake@latest  
 
 #  - uses: cmake/build
 #  - uses: cmake/install
