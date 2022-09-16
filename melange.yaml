@@ -9,7 +9,6 @@ environment:
   contents:
     repositories:
       - https://dl-cdn.alpinelinux.org/alpine/edge/main
-      - https://dl-cdn.alpinelinux.org/alpine/edge/community
       - http://dl-cdn.alpinelinux.org/alpine/v3.8/main
       - http://dl-cdn.alpinelinux.org/alpine/v3.8/community
     packages:
@@ -19,19 +18,14 @@ environment:
       - scanelf
       - ssl_client
       - ca-certificates-bundle
-      - openssl1.1-compat-dev 
-      - alpine-baselayout-data
-      - busybox
-      - bash 
-      - tar
-      - wget
+      - openssl1.1-compat-dev      
       - musl-dev 
       - gcc 
-      - cmake 
-      - make 
       - libtool 
       - libc6-compat 
-      - pcre-dev
+      - pcre-dev  
+      - wget
+      - tar
       - cmake 
       - make 
       - musl-dev 
@@ -40,7 +34,6 @@ environment:
       - util-linux 
       - php7-json 
       - php7-fpm
-
 
   accounts:
     groups:
@@ -53,17 +46,9 @@ environment:
 pipeline:
   - uses: git-checkout
     with:
-      repository: https://github.com/arunodhayamsam/distroless-hiawatha
-      branch: main
-
-#  - uses: cmake/build
-#  - uses: cmake/install
-#  - uses: strip 
-  - name: Run script file
-    run: |
-      chmod +x hiawatha.sh
-      ./hiawatha.sh
-    shell: bash 
-     
-#  - name: Run the hiawatha webserver 
-#    run: /usr/local/sbin/hiawatha   
+      repository: https://gitlab.com/hsleisink/hiawatha
+      branch: v11.1
+  - uses: cmake/configure
+  - uses: cmake/build
+  - uses: cmake/install
+  - uses: strip      
