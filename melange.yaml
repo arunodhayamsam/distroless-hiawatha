@@ -8,9 +8,13 @@ package:
 environment:
   contents:
     repositories:
+      - https://dl-cdn.alpinelinux.org/alpine/v3.16/main
+      - https://dl-cdn.alpinelinux.org/alpine/v3.16/community
       - https://dl-cdn.alpinelinux.org/alpine/edge/main
-      - http://dl-cdn.alpinelinux.org/alpine/v3.8/main
-      - http://dl-cdn.alpinelinux.org/alpine/v3.8/community
+      - https://dl-cdn.alpinelinux.org/alpine/edge/community
+      - https://dl-cdn.alpinelinux.org/alpine/v3.8/main
+      - https://dl-cdn.alpinelinux.org/alpine/v3.8/community
+
     packages:
       - alpine-baselayout-data
       - busybox
