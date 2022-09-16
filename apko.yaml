@@ -4,7 +4,7 @@ contents:
     - https://dl-cdn.alpinelinux.org/alpine/edge/community
     - https://dl-cdn.alpinelinux.org/alpine/edge/testing
     - http://dl-cdn.alpinelinux.org/alpine/v3.8/main
-    - http://dl-cdn.alpinelinux.org/alpine/v3.8/communit
+    - http://dl-cdn.alpinelinux.org/alpine/v3.8/community
     - '@local /github/workspace/packages'
   packages:
     - ca-certificates-bundle
