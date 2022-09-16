@@ -16,4 +16,6 @@ contents:
 #work-dir: /var/
 
 entrypoint:
-  command: /usr/local/sbin/hiawatha 
+  type: service-bundle
+  services:
+    hiawatha: /usr/local/sbin/hiawatha 
