@@ -13,7 +13,6 @@ contents:
     - alpine-baselayout-data
     - binutils
     - busybox
-    -	mbedtls-static
     - hiawatha@local
     
 #work-dir: /var/
