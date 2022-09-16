@@ -38,6 +38,7 @@ environment:
       - util-linux 
       - php7-json 
       - php7-fpm
+      - mbedtls
       - mbedtls-static
 
   accounts:
