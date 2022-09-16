@@ -3,6 +3,8 @@ contents:
     - https://dl-cdn.alpinelinux.org/alpine/edge/main
     - https://dl-cdn.alpinelinux.org/alpine/edge/community
     - https://dl-cdn.alpinelinux.org/alpine/edge/testing
+    - https://dl-cdn.alpinelinux.org/alpine/v3.16/main
+    - https://dl-cdn.alpinelinux.org/alpine/v3.16/community
     - http://dl-cdn.alpinelinux.org/alpine/v3.8/main
     - http://dl-cdn.alpinelinux.org/alpine/v3.8/community
     - '@local /github/workspace/packages'
@@ -11,6 +13,7 @@ contents:
     - alpine-baselayout-data
     - binutils
     - busybox
+    -	mbedtls-static
     - hiawatha@local
     
 #work-dir: /var/
